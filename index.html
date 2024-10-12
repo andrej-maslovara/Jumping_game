@@ -8,25 +8,29 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <h4>
-      Please help <span>Brankec</span> get to <span>Vanilla code Valley</span><br/>
-      by pressing Space to jump over the obstacles.<br>
-      To start the game press Enter.<br/>
-      To quit the game press ESC.
-    </h4>
+    <section class="header">
+      <img class="banner" src="banner.png" />
+      <h4>
+        Please help <span>Brankec</span> get to <span>Vanilla code Valley</span
+        ><br />
+        by pressing Space to jump over the obstacles.<br />
+        To start the game press Enter.<br />
+        To quit the game press ESC.
+      </h4>
+    </section>
 
     <div class="game-container">
-      <section class="header">
+      <section class="game-header">
         <div class="heart-container">
           <img class="health" src="heart.svg" alt="heart">
           <img class="health" src="heart.svg" alt="heart">
           <img class="health" src="heart.svg" alt="heart">
         </div>
-        
+
         <span class="timer" id="timer">Timer: 20</span>
       </section>
       <img class="character" id="character" src="Brankec.png" alt="Character">
-      <div class="obstacle" id="obstacle"></div>
+      <img class="obstacle" id="obstacle" src="obstacle.png">
     </div>
   </body>
 </html>

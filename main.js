@@ -10,8 +10,11 @@ let timerInterval;
 function removeInitialMessage() {
   const initialMessage = document.querySelector("h4");
   if (initialMessage) {
-    initialMessage.remove();
+    initialMessage.textContent = "Fly High, Land Hard!";
+
+    initialMessage.classList.add("motivational-message");
   }
+
 }
 
 function startTimer() {
@@ -113,7 +116,8 @@ function checkCollision() {
     console.log('obstacle', obstacle);
     obstacle.remove();
 
-    obstacle = document.createElement("div");
+    obstacle = document.createElement("img");
+    obstacle.src = "./obstacle.png";
     obstacle.classList.add("obstacle");
     obstacle.id = "obstacle"; // Set the ID to the same as before
     setRandomObstacleSize(obstacle);
@@ -126,7 +130,8 @@ function checkCollision() {
   if (isReplaced) {
     obstacle.remove();
 
-    obstacle = document.createElement("div");
+    obstacle = document.createElement("img");
+    obstacle.src = "./obstacle.png";
     obstacle.classList.add("obstacle");
     obstacle.id = "obstacle"; // Set the ID to the same as before
     setRandomObstacleSize(obstacle);

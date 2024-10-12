@@ -7,24 +7,31 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 50rem;
+  box-sizing: border-box;
+  height: 100vh;
   margin: 0 auto;
-  background: url('background.jpg') no-repeat center center / cover;
+  padding-top: 7rem;
+  background: url("background.jpg") no-repeat center center / cover;
   background-color: rgba(255, 255, 255, 0.5);
   background-attachment: fixed;
 }
 
 h4 {
-  font-size: clamp(1.7rem, 2.3vw + 1rem, 3rem);
+  font-size: clamp(1.3rem, 2vw + 0.75rem, 2.25rem);
   color: #0b0467;
+  position: absolute;
+  top: 0;
   z-index: 3;
+  line-height: 3.5rem;
+  left: 20%;
+  margin-top: 1.7rem;
 }
 span {
   color: #780404;
   z-index: 3;
   color: #1f2937;
   margin: 4rem 0;
-  line-height: 5rem;
+  line-height: 4rem;
 }
 span {
   color: #ff0000;
@@ -37,6 +44,12 @@ p {
   z-index: 3;
 }
 
+h4.motivational-message {
+    font-size: clamp(2rem, 2.4vw + 1rem, 3.5rem);
+    left: 25%;
+    top: 50px;
+}
+
 .game-container {
   margin: 0 auto;
   position: relative;
@@ -45,8 +58,17 @@ p {
   overflow: hidden;
   border: 2px solid #333;
   border-radius: 1rem;
-  background-color: #fad954eb;
+  background-color: #fad954ea;
   z-index: 3;
+}
+
+.header {
+  position: absolute;
+  top: 15px;
+}
+
+.banner {
+  height: 30%;
 }
 
 .transparent {
@@ -54,30 +76,32 @@ p {
 }
 
 @keyframes blink-animation {
-    0%, 20% {
-      opacity: 1; /* Fully visible */
-    }
-    50% {
-      opacity: 0; /* Invisible */
-    }
-    80%, 100% {
-      opacity: 1; /* Fully visible again */
-    }
+  0%,
+  20% {
+    opacity: 1; /* Fully visible */
   }
+  50% {
+    opacity: 0; /* Invisible */
+  }
+  80%,
+  100% {
+    opacity: 1; /* Fully visible again */
+  }
+}
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin: auto;
-  }
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
 
-  .timer {
-    font-size: clamp(1.3rem, 2vw + 0.75rem, 2.25rem);
-    font-weight: bolder;
-    color: #ff0000;
-    margin: 1rem;
-  }
+.timer {
+  font-size: clamp(1.3rem, 2vw + 0.75rem, 2.25rem);
+  font-weight: bolder;
+  color: #ff0000;
+  margin: 1rem;
+}
 
 .character {
   margin: 0.1rem 1rem 0.1rem 10rem;
@@ -96,9 +120,8 @@ p {
 }
 
 .character.blink {
-    animation: blink-animation 1s steps(5, start) infinite;
+  animation: blink-animation 1s steps(5, start) infinite;
 }
-
 
 .character.animate {
   animation: jumpAnimation 1.2s;
@@ -115,7 +138,6 @@ p {
     bottom: 1%;
   }
 }
-  
 
 .obstacle {
   position: absolute;
@@ -124,7 +146,6 @@ p {
   margin: 0;
   width: 16rem;
   height: 4rem;
-  background-color: #ff0000;
   border-radius: 2rem;
   border: 0.2rem solid black;
 }
@@ -156,6 +177,10 @@ p {
     width: 80%;
   }
 
+  h4.motivational-message{
+    left: 30%;
+  }
+
   .character {
     margin-left: 7rem;
   }
@@ -172,6 +197,10 @@ p {
 @media (max-width: 767px) {
   .game-container {
     width: 90%;
+  }
+
+  h4.motivational-message{
+    left: 35%;
   }
 
   .character {
