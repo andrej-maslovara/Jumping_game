@@ -62,8 +62,10 @@ function isCharacterAnimating() {
 
 document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
-    toggleCharacterAnimation();
-    checkCollision(); // Check for collision each time the character jumps
+    if (!isCharacterAnimating()) {
+      toggleCharacterAnimation();
+      checkCollision(); // Check for collision each time the character jumps
+    }
   }
 });
 
@@ -77,7 +79,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 function setRandomObstacleSize(obstacleElement) {
-  const randomWidth = Math.random() * (15 - 9) + 4;
+  const randomWidth = Math.random() * (15 - 9) + 6;
   const randomHeight = Math.random() * (4 - 1.5) + 1.5;
 
   // Set the obstacle's new size
@@ -225,7 +227,7 @@ function restartGame() {
     health = 3;
     document.getElementById("timer").textContent = "Timer: 20";
 
-    checkInterval = setInterval(checkCollision, 50);
+    checkInterval = setInterval(checkCollision, 25);
 
     // Remove the game over message
     const gameOverMessage = document.querySelector(".game-container p");
