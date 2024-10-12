@@ -21,20 +21,20 @@ function startTimer() {
   timerInterval = setInterval(() => {
     if (timerValue > 0) {
       timerValue--;
-      document.getElementById("timer").textContent = `Timer: ${timerValue}`; // Update the displayed timer
+      document.getElementById("timer").textContent = `Timer: ${timerValue}`; 
     } else {
-      clearInterval(timerInterval); // Stop the timer when it reaches zero
-      handleWin(); // Call the win condition
+      clearInterval(timerInterval); 
+      handleWin(); 
     }
-  }, 1000); // Update every second
+  }, 1000); 
 }
 
 function handleWin() {
   if (health > 0) {
     isGameOver = true;
-    clearInterval(timerInterval); // Stop the timer
-    character.classList.remove("animate"); // Stop character animation
-    obstacle.classList.remove("animate"); // Ensure obstacle animation is stopped
+    clearInterval(timerInterval); 
+    character.classList.remove("animate"); 
+    obstacle.classList.remove("animate"); 
 
     // Create and insert the win message
     const winMessage = document.createElement("p");
@@ -51,11 +51,10 @@ function toggleCharacterAnimation() {
     setTimeout(() => {
       character.classList.remove("animate");
       if (isCharacterOnObstacle) {
-        // Reset the character's position to the bottom of the container after jumping off
         character.style.bottom = "0px";
         isCharacterOnObstacle = false;
       }
-    }, 1200); // Adjust to be the same as the character jump animation duration
+    }, 1200); 
   }
 }
 
@@ -67,7 +66,7 @@ document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
     if (!isCharacterAnimating()) {
       toggleCharacterAnimation();
-      checkCollision(); // Check for collision each time the character jumps
+      checkCollision(); 
     }
   }
 });
@@ -119,7 +118,7 @@ function checkCollision() {
     obstacle = document.createElement("img");
     obstacle.src = "./obstacle.png";
     obstacle.classList.add("obstacle");
-    obstacle.id = "obstacle"; // Set the ID to the same as before
+    obstacle.id = "obstacle";
     setRandomObstacleSize(obstacle);
     gameContainer.appendChild(obstacle);
 
@@ -133,7 +132,7 @@ function checkCollision() {
     obstacle = document.createElement("img");
     obstacle.src = "./obstacle.png";
     obstacle.classList.add("obstacle");
-    obstacle.id = "obstacle"; // Set the ID to the same as before
+    obstacle.id = "obstacle";
     setRandomObstacleSize(obstacle);
     gameContainer.appendChild(obstacle);
 
@@ -145,25 +144,25 @@ function checkCollision() {
 
   const isColliding = !(
     (
-      characterRect.right < obstacleRect.left || // Character is to the left of the obstacle
-      characterRect.left > obstacleRect.right || // Character is to the right of the obstacle
+      characterRect.right < obstacleRect.left || 
+      characterRect.left > obstacleRect.right || 
       characterRect.bottom < obstacleRect.top
-    ) // Character is above the obstacle
+    ) 
   );
 
   const isLandingOnObstacle =
     characterRect.bottom + 5 >= obstacleRect.top &&
-    characterRect.bottom <= obstacleRect.top + 5 && // Allow a small margin for landing
+    characterRect.bottom <= obstacleRect.top + 5 && 
     characterRect.right > obstacleRect.left &&
     characterRect.left < obstacleRect.right;
 
   if (isLandingOnObstacle && !isCharacterOnObstacle) {
     isCharacterOnObstacle = true;
-    character.style.bottom = `${obstacleRect.height}px`; // Adjust character position
-    character.classList.remove("animate"); // Stop character animation
+    character.style.bottom = `${obstacleRect.height}px`; 
+    character.classList.remove("animate"); 
   } else if (!isLandingOnObstacle && isCharacterOnObstacle) {
     isCharacterOnObstacle = false;
-    character.style.bottom = "0px"; // Reset character position
+    character.style.bottom = "0px"; 
   }
 
   if (isColliding && !isLandingOnObstacle && health <= 1) {
@@ -212,9 +211,9 @@ document.addEventListener("keydown", (event) => {
 });
 async function handleGameOver() {
   isGameOver = true;
-  isObstacleAnimating = false; // Stop obstacle animation
-  character.classList.remove("animate"); // Stop character animation
-  obstacle.classList.remove("animate"); // Ensure obstacle animation is stopped
+  isObstacleAnimating = false;
+  character.classList.remove("animate"); 
+  obstacle.classList.remove("animate"); 
 
   await delay(1000);
 
@@ -235,7 +234,6 @@ function restartGame() {
   if (isGameOver) {
     isGameOver = false;
     timerValue = 20;
-    // Reset character and obstacle positions
     character.style.bottom = "0px";
     character.classList.remove("animate");
     obstacle.classList.remove("animate");
