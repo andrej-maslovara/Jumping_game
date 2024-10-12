@@ -1,5 +1,5 @@
 const character = document.getElementById("character");
-const heartContainer = document.querySelector(".heart-container");
+const gameContainer = document.querySelector(".game-container");
 const hearts = document.querySelectorAll(".health");
 let isObstacleAnimating = false;
 let isGameOver = false;
@@ -104,6 +104,22 @@ let isReplaced = false;
 function checkCollision() {
   let obstacle = document.getElementById("obstacle");
   const characterRect = character.getBoundingClientRect();
+  const obstacleStyle = window.getComputedStyle(obstacle);
+  const obstacleLeft = parseFloat(obstacleStyle.left);
+
+  if(obstacleLeft <= -50) {
+    console.log('obstacle', obstacle);
+    obstacle.remove();
+
+    obstacle = document.createElement("div");
+    obstacle.classList.add("obstacle");
+    obstacle.id = "obstacle"; // Set the ID to the same as before
+    setRandomObstacleSize(obstacle);
+    gameContainer.appendChild(obstacle);
+
+    obstacle.classList.add("animate");
+    isObstacleAnimating = true;
+  }
 
   if (isReplaced) {
     obstacle.remove();
@@ -112,7 +128,7 @@ function checkCollision() {
     obstacle.classList.add("obstacle");
     obstacle.id = "obstacle"; // Set the ID to the same as before
     setRandomObstacleSize(obstacle);
-    heartContainer.appendChild(obstacle);
+    gameContainer.appendChild(obstacle);
 
     isReplaced = false;
     obstacle.classList.add("animate");
@@ -142,7 +158,7 @@ function checkCollision() {
     isCharacterOnObstacle = false;
     character.style.bottom = "0px"; // Reset character position
   }
-  console.log("health", health);
+
   if (isColliding && !isLandingOnObstacle && health <= 1) {
     character.classList.add("blink");
 

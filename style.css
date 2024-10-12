@@ -15,10 +15,11 @@ body {
 h4 {
   font-size: clamp(1.7rem, 2.3vw + 1rem, 3rem);
   color: #1f2937;
+  margin: 4rem 0;
+  line-height: 5rem;
 }
 span {
   color: #ff0000;
-  text-decoration: underline;
 }
 
 p {
@@ -34,6 +35,7 @@ p {
   height: 25rem;
   overflow: hidden;
   border: 2px solid #333;
+  border-radius: 1rem;
   background-color: #fad954eb;
 }
 
